@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb-base",
+	"rules": {
+		"indent": ["error", 4]
+	},
+    "globals": {
+		"TweenMax": true,
+		"TweenLite": true,
+		"Draggable": true,
+		"$": true
+	}
+}
