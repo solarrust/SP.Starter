@@ -1,6 +1,6 @@
 {% extends "./ext/base.nunj" %}
 
-{% from "./parts/_menu.nunj" import menu %}
+{% from "./modules/menu/menu.nunj" import menu %}
 
 {# Пример расширения существующего блока #}
 {% block title %}Home {{ super() }}{% endblock title %}
@@ -58,7 +58,7 @@
 		</main>
 
 		{# Вложенные шаблоны #}
-		{% include './parts/_sidebar.nunj' %}
+		{% include './modules/sidebar/sidebar.nunj' %}
 
 	</div>
 {% endblock content %}

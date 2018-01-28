@@ -5,15 +5,19 @@ require('require-dir')('gulp-tasks');
 import { IS_PRODUCTION } from './config'
 
 const buildDeps = [
-	'html:build',
-	'styles:build',
 	'fonts:build',
 	'images:build',
 	'svg:build',
 	'webpack'
 ];
 
-IS_PRODUCTION ? gulp.task('build', () => runSequence('clean', buildDeps)) : gulp.task('build', buildDeps);
+IS_PRODUCTION
+	? gulp.task(
+			'build',
+			() => runSequence('styles:build', 'html:build'),
+			() => runSequence('clean', buildDeps)
+		)
+	: gulp.task('build', buildDeps);
 
 gulp.task('zip', () => runSequence('clean', buildDeps, 'zip-archive'));
 

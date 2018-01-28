@@ -4,6 +4,8 @@ import nunjucksRender from 'gulp-nunjucks-api'
 import prettify from 'gulp-html-prettify'
 import notifier from 'node-notifier'
 import plumber from 'gulp-plumber'
+import posthtml from 'gulp-posthtml'
+import posthtmlCssModules from 'posthtml-css-modules'
 
 import { IS_PRODUCTION } from '../config'
 import PATHS from '../paths'
@@ -37,5 +39,6 @@ gulp.task('html:build', () => {
 			autoescape: false
 		}))
 		.pipe(prettify({indent_char: ' ', indent_size: 4}))
+		.pipe(posthtml([posthtmlCssModules('./build/screen.json')], {}))
 		.pipe(gulp.dest(PATHS.build.html));
 });
